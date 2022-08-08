@@ -14,7 +14,7 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
 const exitHandler = () => {
   if (server) {
     server.close(() => {
-      logger.info('Server closed');
+      logger.info('SIMS Server closed, Bye Bye!');
       process.exit(1);
     });
   } else {
