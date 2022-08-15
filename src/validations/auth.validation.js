@@ -1,49 +1,49 @@
-const Joi = require('joi');
-const { password } = require('./custom.validation');
+import JOI from 'joi';
+import validator from './custom.validation.js';
 
 const register = {
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().custom(password),
-    name: Joi.string().required(),
+  body: JOI.object().keys({
+    email: JOI.string().required().email(),
+    password: JOI.string().required().custom(validator.password),
+    name: JOI.string().required(),
   }),
 };
 
 const login = {
-  body: Joi.object().keys({
-    email: Joi.string().required(),
-    password: Joi.string().required(),
+  body: JOI.object().keys({
+    email: JOI.string().required(),
+    password: JOI.string().required(),
   }),
 };
 
 const logout = {
-  body: Joi.object().keys({
-    refreshToken: Joi.string().required(),
+  body: JOI.object().keys({
+    refreshToken: JOI.string().required(),
   }),
 };
 
 const refreshTokens = {
-  body: Joi.object().keys({
-    refreshToken: Joi.string().required(),
+  body: JOI.object().keys({
+    refreshToken: JOI.string().required(),
   }),
 };
 
 const forgotPassword = {
-  body: Joi.object().keys({
-    email: Joi.string().email().required(),
+  body: JOI.object().keys({
+    email: JOI.string().email().required(),
   }),
 };
 
 const resetPassword = {
-  query: Joi.object().keys({
-    token: Joi.string().required(),
+  query: JOI.object().keys({
+    token: JOI.string().required(),
   }),
-  body: Joi.object().keys({
-    password: Joi.string().required().custom(password),
+  body: JOI.object().keys({
+    password: JOI.string().required().custom(validator.password),
   }),
 };
 
-module.exports = {
+export default {
   register,
   login,
   logout,

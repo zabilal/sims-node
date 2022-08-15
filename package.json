@@ -2,9 +2,9 @@
   "name": "node-express-mongoose-boilerplate",
   "version": "1.5.0",
   "description": "A boilerplate for building production-ready RESTful APIs using Node.js, Express, and Mongoose",
+  "type": "module",
   "main": "src/index.js",
-  "repository": "https://github.com/hagopj13/node-express-mongoose-boilerplate.git",
-  "author": "Hagop Jamkojian <hagopj13@gmail.com>",
+  "author": "ZAKTECH",
   "license": "MIT",
   "engines": {
     "node": ">=12.0.0"

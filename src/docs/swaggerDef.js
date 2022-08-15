@@ -1,11 +1,10 @@
-const { version } = require('../../package.json');
-const config = require('../config/config');
+import Config from '../config/config.js';
 
 const swaggerDef = {
   openapi: '3.0.3',
   info: {
     title: 'SIMS-NODE API documentation',
-    version,
+    version: '1.0.0',
     license: {
       name: 'MIT',
       url: 'https://github.com/hagopj13/node-express-mongoose-boilerplate/blob/master/LICENSE',
@@ -13,9 +12,9 @@ const swaggerDef = {
   },
   servers: [
     {
-      url: `http://localhost:${config.port}/v1`,
+      url: `http://localhost:${Config.port}/v1`,
     },
   ],
 };
 
-module.exports = swaggerDef;
+export default swaggerDef;

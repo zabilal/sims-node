@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const faker = require('faker');
-const User = require('../../src/models/user.model');
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+import faker from 'faker';
+import User from '../../src/modules/users/user.model.js';
 
 const password = 'password1';
 const salt = bcrypt.genSaltSync(8);
@@ -35,7 +35,7 @@ const insertUsers = async (users) => {
   await User.insertMany(users.map((user) => ({ ...user, password: hashedPassword })));
 };
 
-module.exports = {
+exports = {
   userOne,
   userTwo,
   admin,
