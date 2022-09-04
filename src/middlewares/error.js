@@ -1,7 +1,7 @@
-const httpStatus = require('http-status');
-const config = require('../config/config');
-const logger = require('../config/logger');
-const ApiError = require('../utils/ApiError');
+import httpStatus from 'http-status';
+import env from '../config/config.js';
+import Logger from '../config/logger.js';
+import ApiError from '../utils/ApiError.js';
 
 const errorConverter = (err, req, res, next) => {
   let error = err;
@@ -16,7 +16,7 @@ const errorConverter = (err, req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
   let { statusCode, message } = err;
-  if (config.env === 'production' && !err.isOperational) {
+  if (env === 'production' && !err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;
     message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
   }
@@ -26,17 +26,17 @@ const errorHandler = (err, req, res, next) => {
   const response = {
     code: statusCode,
     message,
-    ...(config.env === 'development' && { stack: err.stack }),
+    ...(env === 'development' && { stack: err.stack }),
   };
 
-  if (config.env === 'development') {
-    logger.error(err);
+  if (env === 'development') {
+    Logger.error(err);
   }
 
   res.status(statusCode).send(response);
 };
 
-module.exports = {
+export default {
   errorConverter,
   errorHandler,
 };

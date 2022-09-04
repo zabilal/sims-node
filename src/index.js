@@ -1,20 +1,26 @@
-const mongoose = require('mongoose');
-const app = require('./app');
-const config = require('./config/config');
-const logger = require('./config/logger');
+import Mongoose from 'mongoose';
+import app from './app.js';
+import Config from './config/config.js';
+import Logger from './config/logger.js';
 
 let server;
-mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
-  logger.info('Connected to MongoDB');
-  server = app.listen(config.port, () => {
-    logger.info(`Listening to port ${config.port}`);
+Mongoose.connect(Config.mongoose.url, Config.mongoose.options).then(() => {
+  Logger.info('Connected to MongoDB');
+  server = app.listen(Config.port, () => {
+    Logger.info(`SIMS Server running on port: ${Config.port}
+      -----------------------------------------
+      Running on ${process.env.NODE_ENV}
+      -----------------------------------------
+      Make something great 1 bit at a time
+    `);
+    Logger.info(`SMPT PORT ${Config.email.smtp.host}`);
   });
 });
 
 const exitHandler = () => {
   if (server) {
     server.close(() => {
-      logger.info('Server closed');
+      Logger.info('SIMS Server closed, Bye Bye my friends!');
       process.exit(1);
     });
   } else {
@@ -23,7 +29,7 @@ const exitHandler = () => {
 };
 
 const unexpectedErrorHandler = (error) => {
-  logger.error(error);
+  Logger.error(error);
   exitHandler();
 };
 
@@ -31,7 +37,7 @@ process.on('uncaughtException', unexpectedErrorHandler);
 process.on('unhandledRejection', unexpectedErrorHandler);
 
 process.on('SIGTERM', () => {
-  logger.info('SIGTERM received');
+  Logger.info('SIGTERM received');
   if (server) {
     server.close();
   }

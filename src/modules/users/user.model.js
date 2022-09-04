@@ -1,14 +1,20 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
-const { toJSON, paginate } = require('./plugins');
-const { roles } = require('../config/roles');
+import Mongoose from 'mongoose';
+import Validator from 'validator';
+import Bcrypt from 'bcryptjs';
+import toJSON from '../../plugins/toJSON.plugin.js';
+import paginate from '../../plugins/paginate.plugin.js';
+import Roles from '../../config/roles.js';
 
-const userSchema = mongoose.Schema(
+const userSchema = Mongoose.Schema(
   {
-    name: {
+    firstName: {
       type: String,
-      required: true,
+      required: [true, 'FirstName is required!'],
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: [true, 'LastName is required!'],
       trim: true,
     },
     email: {
@@ -18,7 +24,7 @@ const userSchema = mongoose.Schema(
       trim: true,
       lowercase: true,
       validate(value) {
-        if (!validator.isEmail(value)) {
+        if (!Validator.isEmail(value)) {
           throw new Error('Invalid email');
         }
       },
@@ -27,7 +33,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      minlength: 8,
+      minlength: 5,
       validate(value) {
         if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
           throw new Error('Password must contain at least one letter and one number');
@@ -37,9 +43,17 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      enum: roles,
+      enum: Roles.roles,
       default: 'user',
     },
+    // favorites: {
+    //   posts: [
+    //     {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: 'Post',
+    //     },
+    //   ],
+    // },
   },
   {
     timestamps: true,
@@ -68,13 +82,13 @@ userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
  */
 userSchema.methods.isPasswordMatch = async function (password) {
   const user = this;
-  return bcrypt.compare(password, user.password);
+  return Bcrypt.compare(password, user.password);
 };
 
 userSchema.pre('save', async function (next) {
   const user = this;
   if (user.isModified('password')) {
-    user.password = await bcrypt.hash(user.password, 8);
+    user.password = await Bcrypt.hash(user.password, 8);
   }
   next();
 });
@@ -82,6 +96,6 @@ userSchema.pre('save', async function (next) {
 /**
  * @typedef User
  */
-const User = mongoose.model('User', userSchema);
+const User = Mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;

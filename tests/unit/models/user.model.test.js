@@ -1,13 +1,13 @@
-const faker = require('faker');
-const { User } = require('../../../src/models');
+import { name as _name, internet } from 'faker';
+import User from '../../../src/modules/users/user.model.js';
 
 describe('User model', () => {
   describe('User validation', () => {
     let newUser;
     beforeEach(() => {
       newUser = {
-        name: faker.name.findName(),
-        email: faker.internet.email().toLowerCase(),
+        name: _name.findName(),
+        email: internet.email().toLowerCase(),
         password: 'password1',
         role: 'user',
       };
@@ -46,8 +46,8 @@ describe('User model', () => {
   describe('User toJSON()', () => {
     test('should not return user password when toJSON is called', () => {
       const newUser = {
-        name: faker.name.findName(),
-        email: faker.internet.email().toLowerCase(),
+        name: _name.findName(),
+        email: internet.email().toLowerCase(),
         password: 'password1',
         role: 'user',
       };

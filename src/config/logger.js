@@ -1,26 +1,26 @@
-const winston = require('winston');
-const config = require('./config');
+import { format as _format, createLogger, transports as _transports } from 'winston';
+import env from './config.js';
 
-const enumerateErrorFormat = winston.format((info) => {
+const enumerateErrorFormat = _format((info) => {
   if (info instanceof Error) {
     Object.assign(info, { message: info.stack });
   }
   return info;
 });
 
-const logger = winston.createLogger({
-  level: config.env === 'development' ? 'debug' : 'info',
-  format: winston.format.combine(
+const logger = createLogger({
+  level: env === 'development' ? 'debug' : 'info',
+  format: _format.combine(
     enumerateErrorFormat(),
-    config.env === 'development' ? winston.format.colorize() : winston.format.uncolorize(),
-    winston.format.splat(),
-    winston.format.printf(({ level, message }) => `${level}: ${message}`)
+    env === 'development' ? _format.colorize() : _format.uncolorize(),
+    _format.splat(),
+    _format.printf(({ level, message }) => `${level}: ${message}`)
   ),
   transports: [
-    new winston.transports.Console({
+    new _transports.Console({
       stderrLevels: ['error'],
     }),
   ],
 });
 
-module.exports = logger;
+export default logger;

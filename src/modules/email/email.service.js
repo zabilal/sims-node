@@ -1,14 +1,16 @@
-const nodemailer = require('nodemailer');
-const config = require('../config/config');
-const logger = require('../config/logger');
+import { createTransport } from 'nodemailer';
+import Config from '../../config/config.js';
+import Logger from '../../config/logger.js';
 
-const transport = nodemailer.createTransport(config.email.smtp);
+// create reusable transporter object using the default SMTP transport
+const transport = createTransport(Config.email.smtp);
 /* istanbul ignore next */
-if (config.env !== 'test') {
+if (Config.env !== 'test') {
+  Logger.info(transport.verify());
   transport
     .verify()
-    .then(() => logger.info('Connected to email server'))
-    .catch(() => logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
+    .then(() => Logger.info('Connected to email server'))
+    .catch(() => Logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
 }
 
 /**
@@ -19,7 +21,7 @@ if (config.env !== 'test') {
  * @returns {Promise}
  */
 const sendEmail = async (to, subject, text) => {
-  const msg = { from: config.email.from, to, subject, text };
+  const msg = { from: Config.email.from, to, subject, text };
   await transport.sendMail(msg);
 };
 
@@ -39,7 +41,7 @@ const sendResetPasswordEmail = async (to, token) => {
   await sendEmail(to, subject, text);
 };
 
-module.exports = {
+export default {
   transport,
   sendEmail,
   sendResetPasswordEmail,

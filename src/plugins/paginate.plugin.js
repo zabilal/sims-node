@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 const paginate = (schema) => {
   /**
    * @typedef {Object} QueryResult
@@ -18,6 +16,7 @@ const paginate = (schema) => {
    * @param {number} [options.page] - Current page (default = 1)
    * @returns {Promise<QueryResult>}
    */
+  // eslint-disable-next-line no-param-reassign
   schema.statics.paginate = async function (filter, options) {
     let sort = '';
     if (options.sortBy) {
@@ -53,4 +52,4 @@ const paginate = (schema) => {
   };
 };
 
-module.exports = paginate;
+export default paginate;

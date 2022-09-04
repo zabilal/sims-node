@@ -1,14 +1,14 @@
-const moment = require('moment');
-const config = require('../../src/config/config');
-const { tokenTypes } = require('../../src/config/tokens');
-const tokenService = require('../../src/services/token.service');
-const { userOne, admin } = require('./user.fixture');
+import moment from 'moment';
+import jwt from '../../src/config/config.js';
+import tokenTypes from '../../src/config/tokens.js';
+import generateToken from '../../src/modules/auth/auth.service.js';
+import userFixture from './user.fixture.js';
 
-const accessTokenExpires = moment().add(config.jwt.accessExpirationMinutes, 'minutes');
-const userOneAccessToken = tokenService.generateToken(userOne._id, accessTokenExpires, tokenTypes.ACCESS);
-const adminAccessToken = tokenService.generateToken(admin._id, accessTokenExpires, tokenTypes.ACCESS);
+const accessTokenExpires = moment().add(jwt.accessExpirationMinutes, 'minutes');
+const userOneAccessToken = generateToken(userFixture.userOne._id, accessTokenExpires, tokenTypes.ACCESS);
+const adminAccessToken = generateToken(userFixture.admin._id, accessTokenExpires, tokenTypes.ACCESS);
 
-module.exports = {
+export default {
   userOneAccessToken,
   adminAccessToken,
 };
