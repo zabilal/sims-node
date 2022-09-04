@@ -62,6 +62,17 @@ const schoolSchema = mongoose.Schema(
 schoolSchema.plugin(toJSON);
 schoolSchema.plugin(paginate);
 
+/**
+ * Check if email is taken
+ * @param {string} email - The user's email
+ * @param {ObjectId} [excludeSchoolId] - The id of the user to be excluded
+ * @returns {Promise<boolean>}
+ */
+schoolSchema.statics.isEmailTaken = async function (email, excludeSchoolId) {
+  const school = await this.findOne({ email, _id: { $ne: excludeSchoolId } });
+  return !!school;
+};
+
 const School = mongoose.model('School', schoolSchema);
 
 export default School;

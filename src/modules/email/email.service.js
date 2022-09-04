@@ -2,9 +2,11 @@ import { createTransport } from 'nodemailer';
 import Config from '../../config/config.js';
 import Logger from '../../config/logger.js';
 
+// create reusable transporter object using the default SMTP transport
 const transport = createTransport(Config.email.smtp);
 /* istanbul ignore next */
 if (Config.env !== 'test') {
+  Logger.info(transport.verify());
   transport
     .verify()
     .then(() => Logger.info('Connected to email server'))
