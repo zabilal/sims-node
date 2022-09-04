@@ -8,7 +8,7 @@ package-lock.json
 yarn-error.log
 
 # Environment varibales
-.env*
+# .env*
 !.env*.example
 
 # Code coverage
