@@ -5,11 +5,19 @@ import Logger from '../../config/logger.js';
 // create reusable transporter object using the default SMTP transport
 const transport = createTransport(Config.email.smtp);
 /* istanbul ignore next */
+
 if (Config.env !== 'test') {
-  transport
-    .verify()
-    .then(() => Logger.info('Connected to email server'))
-    .catch(() => Logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
+  transport.verify((error) => {
+    if (error) {
+      Logger.warn(error);
+    } else {
+      Logger.info('Server is ready to take our messages');
+    }
+  });
+  // transport
+  //   .verify()
+  //   .then(() => Logger.info('Connected to email server'))
+  //   .catch(() => Logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
 }
 
 /**
