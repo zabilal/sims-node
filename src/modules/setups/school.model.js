@@ -3,7 +3,7 @@ import validator from 'validator';
 import toJSON from '../../plugins/toJSON.plugin.js';
 import paginate from '../../plugins/paginate.plugin.js';
 
-const schoolSchema = mongoose.Schema(
+const schoolSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -34,17 +34,17 @@ const schoolSchema = mongoose.Schema(
     },
     preprimary: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     primary: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     secondary: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     schoolId: {

@@ -8,6 +8,10 @@ import emailService from '../email/email.service.js';
 const register = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
   const tokens = await tokenService.generateAuthTokens(user);
+  await emailService.sendEmail(
+    req.body.email,
+    `Congrats!!\nYour User Account with email ${user.email} has been created successfull`
+  );
   res.status(httpStatus.CREATED).send({ user, tokens });
 });
 

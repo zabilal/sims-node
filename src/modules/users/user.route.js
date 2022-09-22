@@ -7,15 +7,15 @@ import userController from './user.controller.js';
 const router = Router();
 
 router
-  .route('/')
-  .post(auth('manageUsers'), validate(createUser), userController.createUser)
-  .get(auth('getUsers'), validate(getUsers), userController.getUsers);
+  .route('/users')
+  .post(auth(''), validate(createUser), userController.createUser)
+  .get(auth(''), validate(getUsers), userController.getUsers);
 
 router
-  .route('/:userId')
-  .get(auth('getUsers'), validate(getUser), userController.getUser)
-  .patch(auth('manageUsers'), validate(updateUser), userController.updateUser)
-  .delete(auth('manageUsers'), validate(deleteUser), userController.deleteUser);
+  .route('/users')
+  .get(auth('/:userId'), validate(getUser), userController.getUser)
+  .patch(auth('/:userId'), validate(updateUser), userController.updateUser)
+  .delete(auth('/:userId'), validate(deleteUser), userController.deleteUser);
 
 export default router;
 

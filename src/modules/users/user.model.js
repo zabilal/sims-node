@@ -5,16 +5,16 @@ import toJSON from '../../plugins/toJSON.plugin.js';
 import paginate from '../../plugins/paginate.plugin.js';
 import Roles from '../../config/roles.js';
 
-const userSchema = Mongoose.Schema(
+const userSchema = new Mongoose.Schema(
   {
     firstName: {
       type: String,
-      required: [true, 'FirstName is required!'],
+      required: [true, 'First Name is required!'],
       trim: true,
     },
     lastName: {
       type: String,
-      required: [true, 'LastName is required!'],
+      required: [true, 'Last Name is required!'],
       trim: true,
     },
     email: {
@@ -45,6 +45,11 @@ const userSchema = Mongoose.Schema(
       type: String,
       enum: Roles.roles,
       default: 'user',
+    },
+    schoolId: {
+      type: String,
+      required: true,
+      trim: true,
     },
     // favorites: {
     //   posts: [

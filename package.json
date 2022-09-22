@@ -12,10 +12,10 @@
   "scripts": {
     "start": "pm2 start ecosystem.config.json --no-daemon",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-    "test": "jest -i",
-    "test:watch": "jest -i --watchAll",
-    "coverage": "jest -i --coverage",
-    "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest -i",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest -i --watchAll",
+    "coverage": "NODE_OPTIONS=--experimental-vm-modules jest -i --coverage",
+    "coverage:coveralls": "NODE_OPTIONS=--experimental-vm-modules jest -i --coverage --coverageReporters=text-lcov | coveralls",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
@@ -59,19 +59,21 @@
     "http-status": "^1.4.0",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
+    "mailgun-js": "^0.22.0",
     "moment": "^2.24.0",
     "mongoose": "^5.7.7",
     "morgan": "^1.9.1",
-    "nodemailer": "^6.3.1",
+    "nodemailer": "^6.7.8",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "pm2": "^4.1.2",
+    "request": "^2.88.2",
+    "swagger-autogen": "^2.21.5",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4",
     "validator": "^13.0.0",
     "winston": "^3.2.1",
-    "xss-clean": "^0.1.1",
-    "swagger-autogen": "^2.21.5"
+    "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "coveralls": "^3.0.7",
@@ -90,6 +92,5 @@
     "nodemon": "^2.0.0",
     "prettier": "^2.0.5",
     "supertest": "^4.0.2"
-    
   }
 }
