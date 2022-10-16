@@ -47,6 +47,7 @@
     "prettier"
   ],
   "dependencies": {
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -68,6 +69,7 @@
     "passport-jwt": "^4.0.0",
     "pm2": "^4.1.2",
     "request": "^2.88.2",
+    "sib-api-v3-sdk": "^8.4.2",
     "swagger-autogen": "^2.21.5",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4",

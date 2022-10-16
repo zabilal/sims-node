@@ -1,4 +1,4 @@
-import authenticate from 'passport';
+import passport from 'passport';
 import httpStatus from 'http-status';
 import ApiError from '../utils/ApiError.js';
 import roleRights from '../config/roles.js';
@@ -24,7 +24,7 @@ const auth =
   (...requiredRights) =>
   async (req, res, next) => {
     return new Promise((resolve, reject) => {
-      authenticate('jwt', { session: false }, verifyCallback(req, resolve, reject, requiredRights))(req, res, next);
+      passport.authenticate('jwt', { session: false }, verifyCallback(req, resolve, reject, requiredRights))(req, res, next);
     })
       .then(() => next())
       .catch((err) => next(err));

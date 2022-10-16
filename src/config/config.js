@@ -16,6 +16,7 @@ const envVarsSchema = Joi.object()
     SMTP_USERNAME: Joi.string().description('username for email server'),
     SMTP_PASSWORD: Joi.string().description('password for email server'),
     EMAIL_FROM: Joi.string().description('the from field in the emails sent by the app'),
+    SIMS_EMAIL: Joi.string().description('the from name field in the emails sent by the app'),
   })
   .unknown();
 
@@ -46,11 +47,13 @@ export default {
     smtp: {
       host: envVars.SMTP_HOST,
       port: envVars.SMTP_PORT,
+      ssl: true,
       auth: {
         user: envVars.SMTP_USERNAME,
         pass: envVars.SMTP_PASSWORD,
       },
     },
-    from: envVars.EMAIL_FROM,
+    name: envVars.EMAIL_FROM,
+    from: envVars.SIMS_EMAIL,
   },
 };

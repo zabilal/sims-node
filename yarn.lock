@@ -1221,6 +1221,14 @@
   dependencies:
     "follow-redirects" "^1.14.0"
 
+"axios@^0.27.2":
+  "integrity" "sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.27.2.tgz"
+  "version" "0.27.2"
+  dependencies:
+    "follow-redirects" "^1.14.9"
+    "form-data" "^4.0.0"
+
 "babel-jest@^26.6.3":
   "integrity" "sha512-pl4Q+GAVOHwvjrck6jKjvmGhnO3jHX/xuB9d27f+EJZ/6k+6nMuPjorrYp7s++bKKdANwzElBWnLWaObvTnaZA=="
   "resolved" "https://registry.npmjs.org/babel-jest/-/babel-jest-26.6.3.tgz"
@@ -2876,7 +2884,7 @@
   "resolved" "https://registry.npmjs.org/fn.name/-/fn.name-1.1.0.tgz"
   "version" "1.1.0"
 
-"follow-redirects@^1.14.0":
+"follow-redirects@^1.14.0", "follow-redirects@^1.14.9":
   "integrity" "sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.1.tgz"
   "version" "1.15.1"
@@ -2909,6 +2917,15 @@
     "combined-stream" "^1.0.8"
     "mime-types" "^2.1.12"
 
+"form-data@^4.0.0":
+  "integrity" "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww=="
+  "resolved" "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "asynckit" "^0.4.0"
+    "combined-stream" "^1.0.8"
+    "mime-types" "^2.1.12"
+
 "form-data@~2.3.2":
   "integrity" "sha512-1lLKB2Mu3aGP1Q/2eCOx0fNbRMe7XdwktwOruhfqqd0rIJWwN4Dh+E3hrPSlDCXnSR7UtZ1N38rVXm+6+MEhJQ=="
   "resolved" "https://registry.npmjs.org/form-data/-/form-data-2.3.3.tgz"
@@ -2918,7 +2935,7 @@
     "combined-stream" "^1.0.6"
     "mime-types" "^2.1.12"
 
-"formidable@^1.2.0":
+"formidable@^1.1.1", "formidable@^1.2.0":
   "integrity" "sha512-KcpbcpuLNOwrEjnbpMC0gS+X8ciDoZE1kkqzat4a8vrprf+s9pKNQ/QIwWfbfs4ltgmFl3MD177SNTkve3BwGQ=="
   "resolved" "https://registry.npmjs.org/formidable/-/formidable-1.2.6.tgz"
   "version" "1.2.6"
@@ -5667,6 +5684,11 @@
   "resolved" "https://registry.npmjs.org/qs/-/qs-6.5.3.tgz"
   "version" "6.5.3"
 
+"querystring@0.2.0":
+  "integrity" "sha512-X/xY82scca2tau62i9mDyU9K+I+djTMUsvwf7xnUX5GLvVzgJybOJf4Y6o9Zx3oJK/LSXg5tTZBjwzqVPaPO2g=="
+  "resolved" "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz"
+  "version" "0.2.0"
+
 "queue-microtask@^1.2.2":
   "integrity" "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A=="
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
@@ -5718,7 +5740,7 @@
   dependencies:
     "mute-stream" "~0.0.4"
 
-"readable-stream@^2.3.5", "readable-stream@2":
+"readable-stream@^2.0.5", "readable-stream@^2.3.5", "readable-stream@2":
   "integrity" "sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw=="
   "resolved" "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.7.tgz"
   "version" "2.3.7"
@@ -6177,6 +6199,14 @@
   "resolved" "https://registry.npmjs.org/shimmer/-/shimmer-1.2.1.tgz"
   "version" "1.2.1"
 
+"sib-api-v3-sdk@^8.4.2":
+  "integrity" "sha512-+uFgTGoMLg27cApgczdqrYUbkL8WPshDzMbDdn6oJA8rMbaz+aLTFgtW6sCl6eccg+bNqTQNBtejMzw6HyjY3g=="
+  "resolved" "https://registry.npmjs.org/sib-api-v3-sdk/-/sib-api-v3-sdk-8.4.2.tgz"
+  "version" "8.4.2"
+  dependencies:
+    "querystring" "0.2.0"
+    "superagent" "3.7.0"
+
 "side-channel@^1.0.4":
   "integrity" "sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw=="
   "resolved" "https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz"
@@ -6556,6 +6586,22 @@
     "mime" "^1.4.1"
     "qs" "^6.5.1"
     "readable-stream" "^2.3.5"
+
+"superagent@3.7.0":
+  "integrity" "sha512-/8trxO6NbLx4YXb7IeeFTSmsQ35pQBiTBsLNvobZx7qBzBeHYvKCyIIhW2gNcWbLzYxPAjdgFbiepd8ypwC0Gw=="
+  "resolved" "https://registry.npmjs.org/superagent/-/superagent-3.7.0.tgz"
+  "version" "3.7.0"
+  dependencies:
+    "component-emitter" "^1.2.0"
+    "cookiejar" "^2.1.0"
+    "debug" "^3.1.0"
+    "extend" "^3.0.0"
+    "form-data" "^2.3.1"
+    "formidable" "^1.1.1"
+    "methods" "^1.1.1"
+    "mime" "^1.4.1"
+    "qs" "^6.5.1"
+    "readable-stream" "^2.0.5"
 
 "supertest@^4.0.2":
   "integrity" "sha512-1BAbvrOZsGA3YTCWqbmh14L0YEq0EGICX/nBnfkfVJn7SrxQV1I3pMYjSzG9y/7ZU2V9dWqyqk2POwxlb09duQ=="

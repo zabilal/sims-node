@@ -6,6 +6,6 @@ import schoolRoute from './setups/school.route.js';
 export default (app) => {
   app.use('/api/v1/docs', docsRoute);
   app.use('/api/v1/auth', authRoute);
-  app.use('/api/v1/users', userRoutes);
-  app.use('/api/v1/schools', schoolRoute);
+  app.use('/api/v1', userRoutes);
+  app.use('/api/v1/school', schoolRoute);
 };

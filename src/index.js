@@ -13,7 +13,7 @@ Mongoose.connect(Config.mongoose.url, Config.mongoose.options).then(() => {
       -----------------------------------------
       Make something great 1 bit at a time
     `);
-    Logger.info(`SMPT PORT ${Config.email.smtp.host}`);
+    // Logger.info(`SMPT PORT ${Config.email.smtp.host}`);
   });
 });
 
