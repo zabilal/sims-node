@@ -52,6 +52,10 @@ if (env === 'production') {
 
 // v1 api routes
 // app.use('/v1', routes);
+// simple route
+app.get('/', (req, res) => {
+  res.send('SIMS Server Says Hi!!!');
+});
 routes(app);
 
 // send back a 404 error for any unknown api request

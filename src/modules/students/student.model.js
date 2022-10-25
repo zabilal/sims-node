@@ -5,7 +5,17 @@ import paginate from '../../plugins/paginate.plugin.js';
 
 const studentModel = new mongoose.Schema(
   {
-    name: {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    middleName: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    lastName: {
       type: String,
       required: true,
       trim: true,
@@ -82,7 +92,7 @@ const studentModel = new mongoose.Schema(
       required: false,
       trim: true,
     },
-    studentNo: {
+    studentId: {
       type: String,
       required: true,
       trim: true,
@@ -95,16 +105,6 @@ const studentModel = new mongoose.Schema(
     picture: {
       type: String,
       required: false,
-      trim: true,
-    },
-    username: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    password: {
-      type: String,
-      required: true,
       trim: true,
     },
     schoolId: {

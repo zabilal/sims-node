@@ -14,7 +14,7 @@ const getSchools = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['name', 'role']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await schoolService.getAllSchools(filter, options);
-  res.send(result);
+  res.status(httpStatus.OK).send(result);
 });
 
 const getOneSchoolById = catchAsync(async (req, res) => {

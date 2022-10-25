@@ -7,16 +7,27 @@ import Logger from '../../config/logger.js';
 import schoolService from '../settings/school.service.js';
 
 const createStudent = catchAsync(async (req, res) => {
-  const student = await schoolService.createSchool(req.body);
+  const student = await studentService.createStudent(req.body);
   res.status(httpStatus.CREATED).send(student);
 });
 
 const getAllStudents = catchAsync(async (req, res) => {
-  const allStudents = await studentService.getAllStudents();
+  const filter = pick(req.query, ['schoolId']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const allStudents = await studentService.getAllStudents(filter, options);
   res.status(httpStatus.OK).send(allStudents);
+});
+
+const getStudentById = catchAsync(async (req, res) => {
+  const student = await studentService.getStudentById(req.params.studentId);
+  if (!student) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Student not found');
+  }
+  res.status(httpStatus.OK).send(student);
 });
 
 export default {
   createStudent,
   getAllStudents,
+  getStudentById,
 };

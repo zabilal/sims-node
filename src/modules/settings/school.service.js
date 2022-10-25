@@ -19,26 +19,19 @@ const createSchool = async (schoolBody) => {
   }
 
   const school = new School();
-  school.name = schoolBody.name;
-  school.email = schoolBody.email;
-  school.address = schoolBody.address;
-  school.phone = schoolBody.phoneNumber;
-  school.prePrimary = schoolBody.prePrimary;
-  school.primary = schoolBody.primary;
-  school.secondary = schoolBody.secondary;
-  school.schoolId = crypto.randomUUID();
 
-  const createdSchool = await School.create(school);
+  const newSchool = Object.assign(school, schoolBody);
+  newSchool.schoolId = crypto.randomUUID();
+  const createdSchool = await school.save(newSchool);
+
   if (createdSchool != null) {
     const user = new User();
-    user.firstName = schoolBody.firstName;
-    user.lastName = schoolBody.lastName;
-    user.email = schoolBody.adminEmail;
-    user.password = schoolBody.password;
-    user.role = Roles.roles[1];
-    user.schoolId = createdSchool.schoolId;
 
-    const schoolAdmin = await userService.createUser(user);
+    const newUser = Object.assign(user, schoolBody);
+    newUser.role = Roles.roles[1];
+    newUser.schoolId = createdSchool.schoolId;
+
+    const schoolAdmin = await userService.createUser(newUser);
 
     if (schoolAdmin == null) {
       School.findOneAndRemove(createdSchool.id);
