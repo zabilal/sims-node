@@ -17,6 +17,7 @@ const envVarsSchema = Joi.object()
     SMTP_PASSWORD: Joi.string().description('password for email server'),
     EMAIL_FROM: Joi.string().description('the from field in the emails sent by the app'),
     SIMS_EMAIL: Joi.string().description('the from name field in the emails sent by the app'),
+    sendInBlueKey: Joi.string().description('sendinblue email server public key'),
   })
   .unknown();
 
@@ -55,5 +56,6 @@ export default {
     },
     name: envVars.EMAIL_FROM,
     from: envVars.SIMS_EMAIL,
+    senInBlueKey: envVars.sendInBlueKey,
   },
 };

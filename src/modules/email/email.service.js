@@ -25,7 +25,6 @@ import config from '../../config/config.js';
  * @returns {Promise}
  */
 const sendEmail = async (name, to, subject, text) => {
-
   // --------------nodemailer
   // const msg = { from: config.email.from, to, subject, text };
   // try {
@@ -56,7 +55,7 @@ const sendEmail = async (name, to, subject, text) => {
     url: 'https://api.sendinblue.com/v3/smtp/email',
     headers: {
       accept: 'application/json',
-      'api-key': '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',
+      'api-key': config.email.senInBlueKey,
       'content-type': 'application/json',
     },
     data,
