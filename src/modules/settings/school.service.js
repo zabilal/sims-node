@@ -41,8 +41,8 @@ const createSchool = async (schoolBody) => {
     const schoolAdmin = await userService.createUser(user);
 
     if (schoolAdmin == null) {
-      School.findByIdAndDelete(createdSchool.id);
-      throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Error creating schools');
+      School.findOneAndRemove(createdSchool.id);
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Error creating schools');
     }
 
     // school created, send a welcome email
@@ -54,7 +54,7 @@ const createSchool = async (schoolBody) => {
     );
     const response = { school: createdSchool, admin: schoolAdmin };
 
-    logger.info(`CREATED SCHOOL ${response}`);
+    logger.info(`NEW SCHOOL CREATED :: ${response}`);
 
     return response;
   }
@@ -88,8 +88,7 @@ const getSchoolByTenantId = async (tenantId) => {
  * @returns {Promise<QueryResult>}
  */
 const getAllSchools = async (filter, options) => {
-  const schools = await School.paginate(filter, options);
-  return schools;
+  return School.paginate(filter, options);
 };
 
 /**

@@ -39,12 +39,10 @@ const schoolSchema = new mongoose.Schema(
     },
     primary: {
       type: String,
-      // required: true,
       trim: true,
     },
     secondary: {
       type: String,
-      // required: true,
       trim: true,
     },
     schoolId: {
