@@ -26,8 +26,14 @@ const getStudentById = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(student);
 });
 
+const updateStudent = catchAsync(async (req, res) => {
+  const school = await studentService.updateStudentById(req.params.studentId, req.body);
+  res.send(school);
+});
+
 export default {
   createStudent,
   getAllStudents,
   getStudentById,
+  updateStudent,
 };

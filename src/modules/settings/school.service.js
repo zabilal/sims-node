@@ -94,7 +94,7 @@ const getSchoolByEmail = async (email) => {
 };
 
 /**
- * Update user by id
+ * Update school by id
  * @param {ObjectId} schoolId
  * @param {Object} updateBody
  * @returns {Promise<School>}

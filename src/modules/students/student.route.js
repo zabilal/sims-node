@@ -4,8 +4,10 @@ import auth from '../../middlewares/auth.js';
 
 const router = Router();
 
-router.post('/', studentController.createStudent).get('/', studentController.getAllStudents);
+router.post('/', studentController.createStudent);
 
-router.get('/:studentId', studentController.getStudentById);
+router.get('/', studentController.getAllStudents).get('/:studentId', studentController.getStudentById);
+
+router.put('/:studentId', studentController.updateStudent);
 
 export default router;
