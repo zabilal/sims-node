@@ -1,8 +1,6 @@
 import httpStatus from 'http-status';
 import Student from './student.model.js';
 import ApiError from '../../utils/ApiError.js';
-import logger from '../../config/logger.js';
-import School from '../settings/school.model.js';
 
 const createStudent = async (studentRequest) => {
   if (await Student.isEmailTaken(studentRequest.email)) {
@@ -51,8 +49,8 @@ const updateStudentById = async (studentId, updateBody) => {
   if (updateBody.email && (await Student.isEmailTaken(updateBody.email, studentId))) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
-  Object.assign(student, updateBody);
-  await student.save();
+  const updateStudent = Object.assign(student, updateBody);
+  await updateStudent.save();
   return student;
 };
 

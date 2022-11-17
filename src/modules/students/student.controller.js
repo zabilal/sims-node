@@ -3,8 +3,6 @@ import studentService from './student.service.js';
 import catchAsync from '../../utils/catchAsync.js';
 import pick from '../../utils/pick.js';
 import ApiError from '../../utils/ApiError.js';
-import Logger from '../../config/logger.js';
-import schoolService from '../settings/school.service.js';
 
 const createStudent = catchAsync(async (req, res) => {
   const student = await studentService.createStudent(req.body);
