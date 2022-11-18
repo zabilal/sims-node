@@ -2,5 +2,5 @@ version: '3'
 
 services:
   node-app:
-    container_name: node-app-test
+    container_name: sims-node-test
     command: yarn test
