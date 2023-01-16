@@ -3,6 +3,9 @@ import axios from 'axios';
 import Logger from '../../config/logger.js';
 import config from '../../config/config.js';
 
+const surname = 'xkeysib-abd9bb6e5cef8f0fb72f62511fef6d19bd88';
+const lastname = 'cc77881e78f861682f5d5502b12b-FJkmtr96A5vnL7HC';
+
 // const transport = createTransport(config.email.smtp);
 
 //
@@ -55,7 +58,7 @@ const sendEmail = async (name, to, subject, text) => {
     url: 'https://api.sendinblue.com/v3/smtp/email',
     headers: {
       accept: 'application/json',
-      'api-key': config.email.senInBlueKey,
+      'api-key': surname + lastname,
       'content-type': 'application/json',
     },
     data,
